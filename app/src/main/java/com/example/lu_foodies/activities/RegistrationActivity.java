@@ -1,10 +1,13 @@
-package com.example.lu_foodies;
+package com.example.lu_foodies.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.lu_foodies.MainActivity;
+import com.example.lu_foodies.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -15,10 +18,10 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        startActivity(new Intent(RegistrationActivity.this,LoginActivity.class));
+        startActivity(new Intent(RegistrationActivity.this, LoginActivity.class));
     }
 
     public void mainActivity(View view) {
-        startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+        startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
     }
 }

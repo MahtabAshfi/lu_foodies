@@ -1,4 +1,4 @@
-package com.example.lu_foodies;
+package com.example.lu_foodies.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.example.lu_foodies.R;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
 
