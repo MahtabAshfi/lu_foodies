@@ -15,17 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lu_foodies.R;
 import com.example.lu_foodies.connector.HomeCafeConnector;
+import com.example.lu_foodies.connector.HomeItemConnector;
 import com.example.lu_foodies.databinding.FragmentHomeBinding;
 import com.example.lu_foodies.models.HomeCafeModel;
+import com.example.lu_foodies.models.HomeItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView homeCafeRec;
+    RecyclerView homeCafeRec,homeItemRec;
     List<HomeCafeModel> homeCafeModelList;
     HomeCafeConnector homeCafeConnector;
+
+    List<HomeItemModel> homeItemModelList;
+    HomeItemConnector homeItemConnector;
 
     @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,18 +38,32 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
         homeCafeRec = root.findViewById(R.id.home_cafe_rec);
-        homeCafeModelList = new ArrayList<>();
+        homeItemRec = root.findViewById(R.id.home_item_rec);
 
-        homeCafeModelList.add(new HomeCafeModel(R.drawable.sandwich, "Sarah's Cafe"));
+        /////// Horizontal Recyclerview ///////
+        homeCafeModelList = new ArrayList<>();
+        homeCafeModelList.add(new HomeCafeModel(R.drawable.sandwich1, "Sarah's Cafe"));
         homeCafeModelList.add(new HomeCafeModel(R.drawable.fried_potatoes, "MOJO"));
         homeCafeModelList.add(new HomeCafeModel(R.drawable.hamburger, "LU Cafe"));
 
         homeCafeConnector = new HomeCafeConnector(getActivity(),homeCafeModelList);
         homeCafeRec.setAdapter(homeCafeConnector);
-
         homeCafeRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
         homeCafeRec.setHasFixedSize(true);
         homeCafeRec.setNestedScrollingEnabled(false);
+
+        /////// Vertical Recyclerview ///////
+        homeItemModelList = new ArrayList<>();
+        homeItemModelList.add(new HomeItemModel(R.drawable.sandwich,"Sandwich","8.00AM-5.00PM", "60"));
+        homeItemModelList.add(new HomeItemModel(R.drawable.burger,"Burger","8.00AM-5.00PM", "60"));
+        homeItemModelList.add(new HomeItemModel(R.drawable.pizza,"Pizza","8.00AM-5.00PM", "50"));
+
+        homeItemConnector = new HomeItemConnector(getActivity(),homeItemModelList);
+        homeItemRec.setAdapter(homeItemConnector);
+        homeItemRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+        homeItemRec.setHasFixedSize(true);
+        homeItemRec.setNestedScrollingEnabled(false);
+
         return root;
     }
 }
