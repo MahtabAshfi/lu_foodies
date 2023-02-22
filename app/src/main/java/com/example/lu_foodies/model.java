@@ -1,4 +1,4 @@
-package com.example.lu_foodies.activities;
+package com.example.lu_foodies;
 
 public class model {
     String fullname,email;
