@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Out"
+            android:onClick="MainActivity"
             android:layout_gravity="bottom"
             android:textAllCaps="false"
             android:textStyle="bold"
