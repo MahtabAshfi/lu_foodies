@@ -5,31 +5,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lu_foodies.R;
 import com.example.lu_foodies.connector.HomeCafeConnector;
 import com.example.lu_foodies.connector.HomeItemConnector;
-import com.example.lu_foodies.databinding.FragmentHomeBinding;
+import com.example.lu_foodies.connector.UpdateItem;
 import com.example.lu_foodies.models.HomeCafeModel;
 import com.example.lu_foodies.models.HomeItemModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements UpdateItem {
 
     RecyclerView homeCafeRec,homeItemRec;
-    List<HomeCafeModel> homeCafeModelList;
+    ArrayList<HomeCafeModel> homeCafeModelList;
     HomeCafeConnector homeCafeConnector;
 
-    List<HomeItemModel> homeItemModelList;
+    ArrayList<HomeItemModel> homeItemModelList;
     HomeItemConnector homeItemConnector;
 
     @SuppressLint("MissingInflatedId")
@@ -46,17 +43,13 @@ public class HomeFragment extends Fragment {
         homeCafeModelList.add(new HomeCafeModel(R.drawable.fried_potatoes, "MOJO"));
         homeCafeModelList.add(new HomeCafeModel(R.drawable.hamburger, "LU Cafe"));
 
-        homeCafeConnector = new HomeCafeConnector(getActivity(),homeCafeModelList);
+        homeCafeConnector = new HomeCafeConnector(this,getActivity(),homeCafeModelList);
         homeCafeRec.setAdapter(homeCafeConnector);
         homeCafeRec.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        homeCafeRec.setHasFixedSize(true);
-        homeCafeRec.setNestedScrollingEnabled(false);
+
 
         /////// Vertical Recyclerview ///////
         homeItemModelList = new ArrayList<>();
-        homeItemModelList.add(new HomeItemModel(R.drawable.sandwich,"Sandwich","8.00AM-5.00PM", "60"));
-        homeItemModelList.add(new HomeItemModel(R.drawable.burger,"Burger","8.00AM-5.00PM", "60"));
-        homeItemModelList.add(new HomeItemModel(R.drawable.pizza,"Pizza","8.00AM-5.00PM", "50"));
 
         homeItemConnector = new HomeItemConnector(getActivity(),homeItemModelList);
         homeItemRec.setAdapter(homeItemConnector);
@@ -65,5 +58,12 @@ public class HomeFragment extends Fragment {
         homeItemRec.setNestedScrollingEnabled(false);
 
         return root;
+    }
+
+    @Override
+    public void callBack(int position, ArrayList<HomeItemModel> list) {
+        homeItemConnector = new HomeItemConnector(getContext(),list);
+        homeItemConnector.notifyDataSetChanged();
+        homeItemRec.setAdapter(homeItemConnector);
     }
 }

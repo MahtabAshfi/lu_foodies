@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lu_foodies.R;
 import com.example.lu_foodies.models.HomeItemModel;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class HomeItemConnector extends RecyclerView.Adapter<HomeItemConnector.Viewholder> {
 
     Context context;
-    List<HomeItemModel> list;
+    ArrayList<HomeItemModel> list;
 
-    public HomeItemConnector(Context context, List<HomeItemModel> list) {
+    public HomeItemConnector(Context context, ArrayList<HomeItemModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -35,6 +35,7 @@ public class HomeItemConnector extends RecyclerView.Adapter<HomeItemConnector.Vi
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         holder.imageView.setImageResource(list.get(position).getImage());
         holder.name.setText(list.get(position).getName());
+        holder.price.setText(list.get(position).getPrice());
     }
 
     @Override
