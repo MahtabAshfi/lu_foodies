@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
 
-                                    Toast.makeText(LoginActivity.this, "Login Successfull", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_LONG).show();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
