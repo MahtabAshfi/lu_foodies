@@ -31,4 +31,6 @@
     <string name="_60tk">60Tk</string>
     <string name="foods_you_may_like">Foods you may like</string>
     <string name="your_favourite_food_is_here">your favourite food is here</string>
+    <string name="my_cart">My Cart</string>
+    <string name="total">Total</string>
 </resources>

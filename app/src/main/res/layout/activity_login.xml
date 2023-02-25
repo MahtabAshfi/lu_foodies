@@ -14,7 +14,7 @@
         android:foreground="@drawable/background_design"/>
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lu_foodies"
@@ -31,15 +31,15 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/akaya_telivigala"
         android:text="@string/sign_in"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="27sp"
         android:textStyle="bold"
-        android:fontFamily="@font/akaya_telivigala"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView4"
-        android:textAlignment="center"/>
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
 
     <EditText
